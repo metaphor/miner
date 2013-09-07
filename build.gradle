@@ -1,6 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 
+
+group = 'metaphor'
+//archivesBaseName = 'pmatch'
+version = '1.0.0-SNAPSHOT'
+
 repositories {
     mavenCentral()
 }
