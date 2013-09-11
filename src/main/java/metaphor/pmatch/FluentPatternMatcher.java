@@ -13,12 +13,12 @@ public class FluentPatternMatcher {
     }
 
     public <T> FluentPatternMatcher when(Class<T> type, CaseHandler<T> caseHandler) {
-        patternMatcher.onCase(type, caseHandler);
+        patternMatcher.when(type, caseHandler);
         return this;
     }
 
     public FluentPatternMatcher otherwise(OtherwiseHandler otherwiseHandler) {
-        patternMatcher.onOtherwise(otherwiseHandler);
+        patternMatcher.otherwise(otherwiseHandler);
         return this;
     }
 

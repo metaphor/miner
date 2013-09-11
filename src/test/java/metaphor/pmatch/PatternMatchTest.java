@@ -34,7 +34,7 @@ public class PatternMatchTest {
 
     @Test
     public void case_handler_is_called_given_type_matched() throws Exception {
-        patternMatcher.onCase(SomeType.class, someTypeCaseHandler);
+        patternMatcher.when(SomeType.class, someTypeCaseHandler);
         patternMatcher.match(someType);
 
         assertThat(someTypeCaseHandler.called(), is(true));
@@ -42,8 +42,8 @@ public class PatternMatchTest {
 
     @Test
     public void otherwise_handler_is_called_given_nothing_matched() throws Exception {
-        patternMatcher.onCase(SomeType.class, someTypeCaseHandler);
-        patternMatcher.onOtherwise(otherwiseHandler);
+        patternMatcher.when(SomeType.class, someTypeCaseHandler);
+        patternMatcher.otherwise(otherwiseHandler);
         patternMatcher.match(otherType);
 
         assertThat(otherwiseHandler.called(), is(true));
@@ -51,7 +51,7 @@ public class PatternMatchTest {
 
     @Test
     public void do_nothing_given_nothing_matched_and_no_otherwise_handler_specified() throws Exception {
-        patternMatcher.onCase(SomeType.class, someTypeCaseHandler);
+        patternMatcher.when(SomeType.class, someTypeCaseHandler);
         patternMatcher.match(otherType);
 
         assertThat(defaultOtherwiseHandler.called(), is(false));
