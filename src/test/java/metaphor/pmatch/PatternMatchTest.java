@@ -1,5 +1,9 @@
 package metaphor.pmatch;
 
+import metaphor.pmatch.model.CallableOtherwiseHandler;
+import metaphor.pmatch.model.SomeTypeCaseHandler;
+import metaphor.pmatch.model.OtherType;
+import metaphor.pmatch.model.SomeType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,18 +13,18 @@ import static org.junit.Assert.assertThat;
 public class PatternMatchTest {
 
     private SomeTypeCaseHandler someTypeCaseHandler;
-    private SomeOtherwiseHandler otherwiseHandler;
+    private CallableOtherwiseHandler otherwiseHandler;
     private PatternMatcher patternMatcher;
-    private SomeOtherwiseHandler defaultOtherwiseHandler;
+    private CallableOtherwiseHandler defaultOtherwiseHandler;
 
     private SomeType someType;
-    private PatternMatchTest.OtherType otherType;
+    private OtherType otherType;
 
     @Before
     public void setUp() throws Exception {
         someTypeCaseHandler = new SomeTypeCaseHandler();
-        otherwiseHandler = new SomeOtherwiseHandler();
-        defaultOtherwiseHandler = new SomeOtherwiseHandler();
+        otherwiseHandler = new CallableOtherwiseHandler();
+        defaultOtherwiseHandler = new CallableOtherwiseHandler();
 
         patternMatcher = new PatternMatcher();
 
@@ -53,42 +57,5 @@ public class PatternMatchTest {
         assertThat(defaultOtherwiseHandler.called(), is(false));
     }
 
-    class SomeTypeCaseHandler implements CaseHandler<SomeType> {
 
-        private boolean called;
-
-        @Override
-        public void onCase(SomeType someType) {
-            this.called = true;
-        }
-
-        public boolean called() {
-            return called;
-        }
-
-    }
-
-
-    class SomeOtherwiseHandler implements OtherwiseHandler {
-
-        private boolean called;
-
-        @Override
-        public void onOtherwise() {
-            this.called = true;
-        }
-
-        public boolean called() {
-            return called;
-        }
-
-    }
-
-    class SomeType {
-
-    }
-
-    class OtherType {
-
-    }
 }
