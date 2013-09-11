@@ -1,2 +1,3 @@
 * match property
 * introduce hamcrest matcher?
+* provide option to throw exception if nothing match?

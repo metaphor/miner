@@ -21,15 +21,22 @@ public class PatternMatcher {
     }
 
     public void match(Object target) {
-        CaseHandler caseHandler = cases.get(className(target.getClass()));
+        CaseHandler caseHandler = cases.get(className(target));
 
-        if (caseHandler != null) { caseHandler.onCase(target); return; }
+        if (caseHandler != null) {
+            caseHandler.onCase(target);
+            return;
+        }
 
         otherwiseHandler.onOtherwise();
     }
 
     private String className(Class<?> clazz) {
         return clazz.getName();
+    }
+
+    private String className(Object object) {
+        return className(object.getClass());
     }
 
 }
