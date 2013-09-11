@@ -1,13 +1,13 @@
-miner
-=====
-
 Miner
+=
+
+Aim to provide a Pattern Matching framework.
 
 
-###Dependencies
+How to add the dependency?
+=
 
-
-#gradle
+* In gradle
 
 ```groovy
 
