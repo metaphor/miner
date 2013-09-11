@@ -58,7 +58,7 @@ public class PatternMatchTest {
         private boolean called;
 
         @Override
-        public void apply(SomeType someType) {
+        public void onCase(SomeType someType) {
             this.called = true;
         }
 

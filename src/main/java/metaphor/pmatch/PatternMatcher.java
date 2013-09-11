@@ -23,7 +23,7 @@ public class PatternMatcher {
     public void match(Object target) {
         CaseHandler caseHandler = cases.get(className(target.getClass()));
 
-        if (caseHandler != null) { caseHandler.apply(target); return; }
+        if (caseHandler != null) { caseHandler.onCase(target); return; }
 
         otherwiseHandler.onOtherwise();
     }
