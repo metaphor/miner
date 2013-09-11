@@ -2,5 +2,5 @@ package metaphor.pmatch;
 
 public interface OtherwiseHandler {
 
-    public void apply();
+    public void onOtherwise();
 }

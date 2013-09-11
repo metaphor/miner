@@ -22,7 +22,7 @@ public class PatternMatchTest {
         otherwiseHandler = new SomeOtherwiseHandler();
         defaultOtherwiseHandler = new SomeOtherwiseHandler();
 
-        patternMatcher = new PatternMatcher(defaultOtherwiseHandler);
+        patternMatcher = new PatternMatcher();
 
         someType = new SomeType();
         otherType = new OtherType();
@@ -46,13 +46,12 @@ public class PatternMatchTest {
     }
 
     @Test
-    public void default_otherwise_handler_is_called_given_no_otherwise_specified() throws Exception {
+    public void do_nothing_given_nothing_matched_and_no_otherwise_handler_specified() throws Exception {
         patternMatcher.onCase(SomeType.class, someTypeCaseHandler);
         patternMatcher.match(otherType);
 
-        assertThat(defaultOtherwiseHandler.called(), is(true));
+        assertThat(defaultOtherwiseHandler.called(), is(false));
     }
-
 
     class SomeTypeCaseHandler implements CaseHandler<SomeType> {
 
@@ -75,7 +74,7 @@ public class PatternMatchTest {
         private boolean called;
 
         @Override
-        public void apply() {
+        public void onOtherwise() {
             this.called = true;
         }
 

@@ -8,8 +8,8 @@ public class PatternMatcher {
     private Map<String, CaseHandler> cases = new HashMap<String, CaseHandler>();
     private OtherwiseHandler otherwiseHandler;
 
-    public PatternMatcher(OtherwiseHandler otherwiseHandler) {
-        this.otherwiseHandler = otherwiseHandler;
+    public PatternMatcher() {
+        this.otherwiseHandler = new DoNothingOtherwiseHandler();
     }
 
     public <T> void onCase(Class<T> clazz, CaseHandler<T> caseHandler) {
@@ -25,7 +25,7 @@ public class PatternMatcher {
 
         if (caseHandler != null) { caseHandler.apply(target); return; }
 
-        otherwiseHandler.apply();
+        otherwiseHandler.onOtherwise();
     }
 
     private String className(Class<?> clazz) {
