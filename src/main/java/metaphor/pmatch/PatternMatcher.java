@@ -8,6 +8,7 @@ import java.util.List;
 
 import static com.google.common.collect.Iterables.tryFind;
 import static com.google.common.collect.Lists.newArrayList;
+import static metaphor.pmatch.MatchPattern.matchPattern;
 
 public class PatternMatcher {
 
@@ -21,18 +22,18 @@ public class PatternMatcher {
     }
 
     public <T> void when(Matcher matcher, CaseHandler<T> caseHandler) {
-        patterns.add(new MatchPattern(matcher, caseHandler));
+        patterns.add(matchPattern(matcher, caseHandler));
     }
 
     public void otherwise(OtherwiseHandler otherwiseHandler) {
         this.otherwiseHandler = otherwiseHandler;
     }
 
-    public void match(final Object target) {
+    public void match(final Object object) {
 
-        Optional<MatchPattern> found = tryFind(patterns, matches(target));
+        Optional<MatchPattern> found = tryFind(patterns, matches(object));
 
-        if (found.isPresent()) { found.get().handle(target); return; }
+        if (found.isPresent()) { found.get().handle(object); return; }
 
         otherwiseHandler.onOtherwise();
     }
@@ -41,7 +42,7 @@ public class PatternMatcher {
         return new Predicate<MatchPattern>() {
             @Override
             public boolean apply(MatchPattern input) {
-                return input.match(target);
+                return input.matches(target);
             }
         };
     }
