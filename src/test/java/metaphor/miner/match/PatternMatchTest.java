@@ -1,9 +1,10 @@
-package metaphor.pmatch;
+package metaphor.miner.match;
 
-import metaphor.pmatch.model.CallableOtherwiseHandler;
-import metaphor.pmatch.model.SomeTypeCaseHandler;
-import metaphor.pmatch.model.OtherType;
-import metaphor.pmatch.model.SomeType;
+import metaphor.miner.match.PatternMatcher;
+import metaphor.miner.model.CallableOtherwiseHandler;
+import metaphor.miner.model.SomeTypeCaseHandler;
+import metaphor.miner.model.OtherType;
+import metaphor.miner.model.SomeType;
 import org.junit.Before;
 import org.junit.Test;
 

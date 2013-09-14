@@ -1,4 +1,4 @@
-package metaphor.pmatch;
+package metaphor.miner.match;
 
 public interface OtherwiseHandler {
 

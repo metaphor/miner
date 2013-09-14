@@ -1,4 +1,4 @@
-package metaphor.pmatch;
+package metaphor.miner.match;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static com.google.common.collect.Iterables.tryFind;
 import static com.google.common.collect.Lists.newArrayList;
-import static metaphor.pmatch.MatchPattern.matchPattern;
+import static metaphor.miner.match.MatchPattern.matchPattern;
 
 public class PatternMatcher {
 

@@ -1,6 +1,6 @@
-package metaphor.pmatch.model;
+package metaphor.miner.model;
 
-import metaphor.pmatch.OtherwiseHandler;
+import metaphor.miner.match.OtherwiseHandler;
 
 public class CallableOtherwiseHandler implements OtherwiseHandler {
 

@@ -1,15 +1,15 @@
-package metaphor.pmatch;
+package metaphor.miner.match;
 
-import metaphor.pmatch.model.CallableOtherwiseHandler;
-import metaphor.pmatch.model.OtherType;
-import metaphor.pmatch.model.OtherTypeCaseHandler;
-import metaphor.pmatch.model.SomeType;
-import metaphor.pmatch.model.SomeTypeCaseHandler;
-import metaphor.pmatch.model.ThirdType;
+import metaphor.miner.model.CallableOtherwiseHandler;
+import metaphor.miner.model.OtherType;
+import metaphor.miner.model.OtherTypeCaseHandler;
+import metaphor.miner.model.SomeType;
+import metaphor.miner.model.SomeTypeCaseHandler;
+import metaphor.miner.model.ThirdType;
 import org.junit.Before;
 import org.junit.Test;
 
-import static metaphor.pmatch.FluentPatternMatcher.matcher;
+import static metaphor.miner.match.FluentPatternMatcher.matcher;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

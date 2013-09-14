@@ -1,6 +1,6 @@
-package metaphor.pmatch.model;
+package metaphor.miner.model;
 
-import metaphor.pmatch.CaseHandler;
+import metaphor.miner.match.CaseHandler;
 
 public class SomeTypeCaseHandler implements CaseHandler<SomeType> {
 
