@@ -4,19 +4,16 @@ import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import org.hamcrest.Matcher;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.google.common.collect.Iterables.tryFind;
 import static com.google.common.collect.Lists.newArrayList;
 
 public class PatternMatcher {
 
-    private Map<String, CaseHandler<?>> cases = new HashMap<String, CaseHandler<?>>();
-    private OtherwiseHandler otherwiseHandler;
+    private final List<MatchPattern> patterns;
 
-    private List<MatchPattern> patterns;
+    private OtherwiseHandler otherwiseHandler;
 
     public PatternMatcher() {
         this.otherwiseHandler = new DoNothingOtherwiseHandler();
