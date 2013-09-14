@@ -1,5 +1,7 @@
 package metaphor.pmatch;
 
+import org.hamcrest.Matcher;
+
 public class FluentPatternMatcher {
 
     private PatternMatcher patternMatcher;
@@ -12,8 +14,8 @@ public class FluentPatternMatcher {
         return new FluentPatternMatcher();
     }
 
-    public <T> FluentPatternMatcher when(Class<T> type, CaseHandler<T> caseHandler) {
-        patternMatcher.when(type, caseHandler);
+    public <T> FluentPatternMatcher when(Matcher matcher, CaseHandler<T> caseHandler) {
+        patternMatcher.when(matcher, caseHandler);
         return this;
     }
 

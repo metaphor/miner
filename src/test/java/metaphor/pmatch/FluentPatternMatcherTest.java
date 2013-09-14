@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static metaphor.pmatch.FluentPatternMatcher.matcher;
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -36,8 +37,8 @@ public class FluentPatternMatcherTest {
     public void fluent_api_example_match_some_type() throws Exception {
 
         matcher()
-                .when(SomeType.class, someTypeCaseHandler)
-                .when(OtherType.class, otherTypeCaseHandler)
+                .when(instanceOf(SomeType.class), someTypeCaseHandler)
+                .when(instanceOf(OtherType.class), otherTypeCaseHandler)
                 .otherwise(otherwiseHandler)
                 .match(someType);
 
@@ -48,8 +49,8 @@ public class FluentPatternMatcherTest {
     public void fluent_api_example_match_other_type() throws Exception {
 
         matcher()
-                .when(SomeType.class, someTypeCaseHandler)
-                .when(OtherType.class, otherTypeCaseHandler)
+                .when(instanceOf(SomeType.class), someTypeCaseHandler)
+                .when(instanceOf(OtherType.class), otherTypeCaseHandler)
                 .otherwise(otherwiseHandler)
                 .match(otherType);
 
@@ -60,8 +61,8 @@ public class FluentPatternMatcherTest {
     public void fluent_api_example_match_nothing() throws Exception {
 
         matcher()
-                .when(SomeType.class, someTypeCaseHandler)
-                .when(OtherType.class, otherTypeCaseHandler)
+                .when(instanceOf(SomeType.class), someTypeCaseHandler)
+                .when(instanceOf(OtherType.class), otherTypeCaseHandler)
                 .otherwise(otherwiseHandler)
                 .match(target);
 

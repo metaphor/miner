@@ -7,6 +7,7 @@ import metaphor.pmatch.model.SomeType;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -34,7 +35,7 @@ public class PatternMatchTest {
 
     @Test
     public void case_handler_is_called_given_type_matched() throws Exception {
-        patternMatcher.when(SomeType.class, someTypeCaseHandler);
+        patternMatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
         patternMatcher.match(someType);
 
         assertThat(someTypeCaseHandler.called(), is(true));
@@ -42,7 +43,7 @@ public class PatternMatchTest {
 
     @Test
     public void otherwise_handler_is_called_given_nothing_matched() throws Exception {
-        patternMatcher.when(SomeType.class, someTypeCaseHandler);
+        patternMatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
         patternMatcher.otherwise(otherwiseHandler);
         patternMatcher.match(otherType);
 
@@ -51,7 +52,7 @@ public class PatternMatchTest {
 
     @Test
     public void do_nothing_given_nothing_matched_and_no_otherwise_handler_specified() throws Exception {
-        patternMatcher.when(SomeType.class, someTypeCaseHandler);
+        patternMatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
         patternMatcher.match(otherType);
 
         assertThat(defaultOtherwiseHandler.called(), is(false));
