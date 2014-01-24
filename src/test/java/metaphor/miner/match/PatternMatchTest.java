@@ -1,16 +1,15 @@
 package metaphor.miner.match;
 
-import metaphor.miner.match.PatternMatcher;
 import metaphor.miner.model.CallableOtherwiseHandler;
-import metaphor.miner.model.SomeTypeCaseHandler;
 import metaphor.miner.model.OtherType;
 import metaphor.miner.model.SomeType;
-import org.junit.Before;
-import org.junit.Test;
+import metaphor.miner.model.SomeTypeCaseHandler;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PatternMatchTest {
 
@@ -22,7 +21,7 @@ public class PatternMatchTest {
     private SomeType someType;
     private OtherType otherType;
 
-    @Before
+    @BeforeMethod
     public void setUp() throws Exception {
         someTypeCaseHandler = new SomeTypeCaseHandler();
         otherwiseHandler = new CallableOtherwiseHandler();

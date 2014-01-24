@@ -6,13 +6,13 @@ import metaphor.miner.model.OtherTypeCaseHandler;
 import metaphor.miner.model.SomeType;
 import metaphor.miner.model.SomeTypeCaseHandler;
 import metaphor.miner.model.ThirdType;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import static metaphor.miner.match.FluentPatternMatcher.matcher;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class FluentPatternMatcherTest {
 
@@ -23,7 +23,7 @@ public class FluentPatternMatcherTest {
     private OtherType otherType;
     private ThirdType target;
 
-    @Before
+    @BeforeMethod
     public void setUp() throws Exception {
         someTypeCaseHandler = new SomeTypeCaseHandler();
         otherTypeCaseHandler = new OtherTypeCaseHandler();
