@@ -1,7 +1,7 @@
 Miner
 =
 
-Aim to provide a Dispatcher framework.
+Aim to provide a Dispatcher framework. See test source for API usage.
 
 
 How to add the dependency?
