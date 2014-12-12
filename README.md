@@ -1,7 +1,7 @@
 Miner
 =
 
-Aim to provide a Pattern Matching framework.
+Aim to provide a Dispatcher framework.
 
 
 How to add the dependency?
@@ -19,7 +19,7 @@ How to add the dependency?
    }
 
    dependencies {
-       compile "metaphor:miner:1.1.0"
+       compile "metaphor:miner:2.0.0"
    }
 
 ```

@@ -1,4 +1,4 @@
-package metaphor.miner.match;
+package metaphor.miner.dispatcher;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
@@ -8,15 +8,15 @@ import java.util.List;
 
 import static com.google.common.collect.Iterables.tryFind;
 import static com.google.common.collect.Lists.newArrayList;
-import static metaphor.miner.match.MatchPattern.matchPattern;
+import static metaphor.miner.dispatcher.DispatchPattern.matchPattern;
 
-public class PatternMatcher {
+public class Dispatcher {
 
-    private final List<MatchPattern> patterns;
+    private final List<DispatchPattern> patterns;
 
     private OtherwiseHandler otherwiseHandler;
 
-    public PatternMatcher() {
+    public Dispatcher() {
         this.otherwiseHandler = new DoNothingOtherwiseHandler();
         this.patterns = newArrayList();
     }
@@ -29,19 +29,19 @@ public class PatternMatcher {
         this.otherwiseHandler = otherwiseHandler;
     }
 
-    public void match(final Object object) {
+    public void dispatch(final Object object) {
 
-        Optional<MatchPattern> found = tryFind(patterns, matches(object));
+        Optional<DispatchPattern> found = tryFind(patterns, matches(object));
 
         if (found.isPresent()) { found.get().handle(object); return; }
 
         otherwiseHandler.onOtherwise();
     }
 
-    private Predicate<MatchPattern> matches(final Object target) {
-        return new Predicate<MatchPattern>() {
+    private Predicate<DispatchPattern> matches(final Object target) {
+        return new Predicate<DispatchPattern>() {
             @Override
-            public boolean apply(MatchPattern input) {
+            public boolean apply(DispatchPattern input) {
                 return input.matches(target);
             }
         };

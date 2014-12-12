@@ -3,7 +3,7 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group = 'metaphor'
-version = '1.2.0'
+version = '2.0.0'
 
 repositories {
     mavenCentral()
@@ -41,9 +41,4 @@ publishing {
             url "file://$projectDir/../maven-repo/releases"
         }
     }
-}
-
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.9'
 }

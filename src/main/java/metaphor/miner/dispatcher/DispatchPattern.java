@@ -1,19 +1,19 @@
-package metaphor.miner.match;
+package metaphor.miner.dispatcher;
 
 import org.hamcrest.Matcher;
 
-public class MatchPattern {
+public class DispatchPattern {
 
     private final Matcher matcher;
     private final CaseHandler handler;
 
-    private MatchPattern(final Matcher matcher, final CaseHandler handler) {
+    private DispatchPattern(final Matcher matcher, final CaseHandler handler) {
         this.matcher = matcher;
         this.handler = handler;
     }
 
-    public static MatchPattern matchPattern(final Matcher matcher, final CaseHandler handler) {
-        return new MatchPattern(matcher, handler);
+    public static DispatchPattern matchPattern(final Matcher matcher, final CaseHandler handler) {
+        return new DispatchPattern(matcher, handler);
     }
 
     public boolean matches(Object object) {

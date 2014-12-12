@@ -1,9 +1,10 @@
-package metaphor.miner.match;
+package metaphor.miner.dispatcher.match;
 
-import metaphor.miner.model.CallableOtherwiseHandler;
-import metaphor.miner.model.OtherType;
-import metaphor.miner.model.SomeType;
-import metaphor.miner.model.SomeTypeCaseHandler;
+import metaphor.miner.dispatcher.model.CallableOtherwiseHandler;
+import metaphor.miner.dispatcher.model.OtherType;
+import metaphor.miner.dispatcher.model.SomeType;
+import metaphor.miner.dispatcher.model.SomeTypeCaseHandler;
+import metaphor.miner.dispatcher.Dispatcher;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -11,11 +12,11 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class PatternMatchTest {
+public class DispatcherTest {
 
     private SomeTypeCaseHandler someTypeCaseHandler;
     private CallableOtherwiseHandler otherwiseHandler;
-    private PatternMatcher patternMatcher;
+    private Dispatcher dispatcher;
     private CallableOtherwiseHandler defaultOtherwiseHandler;
 
     private SomeType someType;
@@ -27,7 +28,7 @@ public class PatternMatchTest {
         otherwiseHandler = new CallableOtherwiseHandler();
         defaultOtherwiseHandler = new CallableOtherwiseHandler();
 
-        patternMatcher = new PatternMatcher();
+        dispatcher = new Dispatcher();
 
         someType = new SomeType();
         otherType = new OtherType();
@@ -35,25 +36,25 @@ public class PatternMatchTest {
 
     @Test
     public void case_handler_is_called_given_type_matched() throws Exception {
-        patternMatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
-        patternMatcher.match(someType);
+        dispatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
+        dispatcher.dispatch(someType);
 
         assertThat(someTypeCaseHandler.called(), is(true));
     }
 
     @Test
     public void otherwise_handler_is_called_given_nothing_matched() throws Exception {
-        patternMatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
-        patternMatcher.otherwise(otherwiseHandler);
-        patternMatcher.match(otherType);
+        dispatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
+        dispatcher.otherwise(otherwiseHandler);
+        dispatcher.dispatch(otherType);
 
         assertThat(otherwiseHandler.called(), is(true));
     }
 
     @Test
     public void do_nothing_given_nothing_matched_and_no_otherwise_handler_specified() throws Exception {
-        patternMatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
-        patternMatcher.match(otherType);
+        dispatcher.when(instanceOf(SomeType.class), someTypeCaseHandler);
+        dispatcher.dispatch(otherType);
 
         assertThat(defaultOtherwiseHandler.called(), is(false));
     }

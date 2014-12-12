@@ -1,20 +1,20 @@
-package metaphor.miner.match;
+package metaphor.miner.dispatcher.match;
 
-import metaphor.miner.model.CallableOtherwiseHandler;
-import metaphor.miner.model.OtherType;
-import metaphor.miner.model.OtherTypeCaseHandler;
-import metaphor.miner.model.SomeType;
-import metaphor.miner.model.SomeTypeCaseHandler;
-import metaphor.miner.model.ThirdType;
+import metaphor.miner.dispatcher.model.SomeType;
+import metaphor.miner.dispatcher.model.SomeTypeCaseHandler;
+import metaphor.miner.dispatcher.model.CallableOtherwiseHandler;
+import metaphor.miner.dispatcher.model.OtherType;
+import metaphor.miner.dispatcher.model.OtherTypeCaseHandler;
+import metaphor.miner.dispatcher.model.ThirdType;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static metaphor.miner.match.FluentPatternMatcher.matcher;
+import static metaphor.miner.dispatcher.FluentDispatcher.dispatcher;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class FluentPatternMatcherTest {
+public class FluentDispatcherTest {
 
     private SomeTypeCaseHandler someTypeCaseHandler;
     private OtherTypeCaseHandler otherTypeCaseHandler;
@@ -36,11 +36,11 @@ public class FluentPatternMatcherTest {
     @Test
     public void fluent_api_example_match_some_type() throws Exception {
 
-        matcher()
+        dispatcher()
                 .when(instanceOf(SomeType.class), someTypeCaseHandler)
                 .when(instanceOf(OtherType.class), otherTypeCaseHandler)
                 .otherwise(otherwiseHandler)
-                .match(someType);
+                .dispatch(someType);
 
         assertThat(someTypeCaseHandler.called(), is(true));
     }
@@ -48,11 +48,11 @@ public class FluentPatternMatcherTest {
     @Test
     public void fluent_api_example_match_other_type() throws Exception {
 
-        matcher()
+        dispatcher()
                 .when(instanceOf(SomeType.class), someTypeCaseHandler)
                 .when(instanceOf(OtherType.class), otherTypeCaseHandler)
                 .otherwise(otherwiseHandler)
-                .match(otherType);
+                .dispatch(otherType);
 
         assertThat(otherTypeCaseHandler.called(), is(true));
     }
@@ -60,11 +60,11 @@ public class FluentPatternMatcherTest {
     @Test
     public void fluent_api_example_match_nothing() throws Exception {
 
-        matcher()
+        dispatcher()
                 .when(instanceOf(SomeType.class), someTypeCaseHandler)
                 .when(instanceOf(OtherType.class), otherTypeCaseHandler)
                 .otherwise(otherwiseHandler)
-                .match(target);
+                .dispatch(target);
 
         assertThat(otherwiseHandler.called(), is(true));
     }

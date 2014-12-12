@@ -1,4 +1,4 @@
-package metaphor.miner.match;
+package metaphor.miner.dispatcher;
 
 public class DoNothingOtherwiseHandler implements OtherwiseHandler {
     @Override
