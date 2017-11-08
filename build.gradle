@@ -3,7 +3,7 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group 'metaphor'
-version '3.0.0'
+version '3.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
