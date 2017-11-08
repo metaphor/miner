@@ -19,7 +19,7 @@ How to add the dependency?
    }
 
    dependencies {
-       compile "metaphor:miner:2.0.0"
+       compile "metaphor:miner:3.0.0"
    }
 
 ```
