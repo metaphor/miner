@@ -1,6 +1,7 @@
 package metaphor.miner.dispatcher;
 
+@FunctionalInterface
 public interface OtherwiseHandler {
 
-    public void onOtherwise();
+    void onOtherwise();
 }

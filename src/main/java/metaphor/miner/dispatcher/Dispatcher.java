@@ -39,12 +39,6 @@ public class Dispatcher {
     }
 
     private Predicate<DispatchPattern> matches(final Object target) {
-        return new Predicate<DispatchPattern>() {
-            @Override
-            public boolean apply(DispatchPattern input) {
-                return input.matches(target);
-            }
-        };
+        return input -> input.matches(target);
     }
-
 }

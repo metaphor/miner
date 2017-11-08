@@ -1,6 +1,7 @@
 package metaphor.miner.dispatcher;
 
+@FunctionalInterface
 public interface CaseHandler<T> {
 
-    public void onCase(T type);
+    void onCase(T type);
 }
